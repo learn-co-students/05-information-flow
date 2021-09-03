@@ -9,27 +9,42 @@ import { useState } from 'react';
 
 function CardForm({ handleAddCard, cards }){
     // Create states we will use to handle title and content
-    const [ title, titleSetter ] = useState("");
+    // const [ title, titleSetter ] = useState("");
+    // const [ content, contentSetter ] = useState("");
 
     // Create callback functions to manage the onChange behavior for each of our controlled inputs
     
-    function manageTitle(event) {
-        // set new value for title state upon each onChange event
-    }
+    // function manageTitle(event) {
+    //     titleSetter(event.target.value);
+    // }
 
-    function manageContent(event) {
-        
-    }
+    // function manageContent(event) {
+    //     contentSetter(event.target.value);
+    // }
 
     // Extra Credit: Create a state (formData) to manage all of our form data
+
+    const [ formData, formDataSetter ] = useState({
+        title: "",
+        content: ""
+    });
 
     // Extra Credit: Create ONE callback function to manage the onChange behavior for any of our
     // controlled inputs
 
     function manageFormData(event) {
         // Capture name and value from target of event
+        let targetName = event.target.name;
+        let targetValue = event.target.value;
 
         // Update formData state with new form submission data
+        formDataSetter({
+            // what we want to modify
+            ...formData,
+
+            // key / value pairing to be updated
+            [targetName]: targetValue  
+        });
     }
 
     // Create a callback function to handle onSubmit behavior for our controlled form
@@ -58,16 +73,16 @@ function CardForm({ handleAddCard, cards }){
                     className="input"
                     
                     // e.target.value 
-                    onChange={manageTitle}
-                    value={}
+                    onChange={manageFormData}
+                    value={formData.title}
                 />
                 <input 
                     type="text" 
                     placeholder="Content" 
                     name="content"
                     className="input"
-                    onChange={}
-                    value={}
+                    onChange={manageFormData}
+                    value={formData.content}
                 />
 
                 <input 
@@ -76,6 +91,8 @@ function CardForm({ handleAddCard, cards }){
                     className="input"
                 />
             </form>
+
+            <p>{formData.title} {formData.content}</p>
         </div>
     );
 }
