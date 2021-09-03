@@ -53,6 +53,8 @@ function App() {
       {/* Breakout Activity #2: Dynamically display a list of Added Cards as we continue to submit new Card entries. */}
       <CardForm 
         // Pass handleAddCard and cards state as props
+        handleAddCard={handleAddCard}
+        cards={cards}
       />
 
       {/* CardList Component */}

@@ -5,19 +5,21 @@
 // Breakout Activity #2: Dynamically display a list of Added Cards as we continue to submit new Card entries.
 
 // What hook will we need to use to manage states for CardForm?
+import { useState } from 'react';
 
 function CardForm({ handleAddCard, cards }){
     // Create states we will use to handle title and content
+    const [ title, titleSetter ] = useState("");
 
     // Create callback functions to manage the onChange behavior for each of our controlled inputs
     
-    // function manageTitle(event) {
-    //     
-    // }
+    function manageTitle(event) {
+        // set new value for title state upon each onChange event
+    }
 
-    // function manageContent(event) {
-    //     
-    // }
+    function manageContent(event) {
+        
+    }
 
     // Extra Credit: Create a state (formData) to manage all of our form data
 
@@ -54,12 +56,18 @@ function CardForm({ handleAddCard, cards }){
                     placeholder="Title" 
                     name="title"
                     className="input"
+                    
+                    // e.target.value 
+                    onChange={manageTitle}
+                    value={}
                 />
                 <input 
                     type="text" 
                     placeholder="Content" 
                     name="content"
                     className="input"
+                    onChange={}
+                    value={}
                 />
 
                 <input 
