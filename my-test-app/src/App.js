@@ -36,7 +36,7 @@ function App() {
     // that we pass a new object/array to "setState." Otherwise, it won't trigger
     // a re-render.
     // https://jkettmann.com/how-to-accidentally-mutate-state-and-why-not-to#hold-on-were-in-2020-what-about-functional-components
-    setCards(newCardsArray)
+    setCards(newCardsArray);
   }
   
   return (

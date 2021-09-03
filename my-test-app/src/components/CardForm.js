@@ -52,27 +52,36 @@ function CardForm({ handleAddCard, cards }){
         // console.log("handleSubmit fired");
 
         // Prevent default form submission behavior
+        event.preventDefault();
 
         // Create newCard JS object with formData and generate
         // a unique ID for each new object
+        const newCard = {
+            id: cards.length + 1,
+            title: formData.title,
+            content: formData.content
+        }
 
         // Use handleAddCard from props to add the newCard JS object
         // to the existing array of Card objects (cards)
+        handleAddCard(newCard);
 
         // Clear out input values upon form submission using formDataSetter
+        formDataSetter({
+            title: "",
+            content: ""
+        });
     }
 
     return (
         <div>
             <h1> Add New Card</h1>
-            <form onSubmit={null}>
+            <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
                     placeholder="Title" 
                     name="title"
-                    className="input"
-                    
-                    // e.target.value 
+                    className="input" 
                     onChange={manageFormData}
                     value={formData.title}
                 />
